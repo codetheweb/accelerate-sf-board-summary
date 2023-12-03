@@ -7,7 +7,9 @@ app = Flask(__name__)
 @app.route('/search')
 def route_search():
     query_param = request.args.get('q', '')  # Default to empty string if 'q' not provided
-    result = search(query_param)
+    result = []
+    if len(query_param) > 0:
+        result = search(query_param)
 
     response = make_response(jsonify(result))
     
