@@ -1,0 +1,54 @@
+{
+    "id": "30aef087-f53a-4077-a548-96bf03542cd8",
+    "chapters": [
+      {
+        "chapter_number": 0,
+        "start": 0,
+        "end": 500,
+        "chapter_title": "Meeting and Introductions",
+        "chapter_summary": "The video begins with the San Francisco Board of Supervisors holding a meeting at City Hall. Members are introduced and roll call is taken."
+      },
+      {
+        "chapter_number": 1,
+        "start": 500,
+        "end": 870,
+        "chapter_title": "Acknowledgments and Pledge of Allegiance",
+        "chapter_summary": "The speaker acknowledges the indigenous Ramaytush Ohlone community and their sovereign rights. The Pledge of Allegiance is recited by students. The public is welcomed to the meeting."
+      },
+      {
+        "chapter_number": 2,
+        "start": 870,
+        "end": 1150,
+        "chapter_title": "Meeting Procedures and Communications",
+        "chapter_summary": "The Board discusses meeting procedures, public comment submission methods, and giving written comments for official records. They also address the need for language interpretation."
+      },
+      {
+        "chapter_number": 3,
+        "start": 1150,
+        "end": 1430,
+        "chapter_title": "Resolutions and Consent Agenda",
+        "chapter_summary": "Various resolutions and consent agenda items are addressed, including approvals, agreements, and declarations. The audience is informed about the broadcast channels and methods for public comment submission."
+      },
+      {
+        "chapter_number": 4,
+        "start": 1430,
+        "end": 1655,
+        "chapter_title": "City Governance Charter Reform",
+        "chapter_summary": "The speaker discusses the need for charter reform to improve city governance and decision-making. Specific proposals include repealing the prohibition on deputy mayors, granting the mayor authority to fire department directors, and allowing the mayor to veto Board of Supervisors appointments to commissions."
+      },
+      {
+        "chapter_number": 5,
+        "start": 1655,
+        "end": 1770,
+        "chapter_title": "Police Staffing and Redistricting",
+        "chapter_summary": "The speaker focuses on the crisis of police understaffing and proposes measures to address the issue. Discussions on redistricting task forces and police staffing funding for the next fiscal year are also mentioned."
+      },
+      {
+        "chapter_number": 6,
+        "start": 1770,
+        "end": 1794,
+        "chapter_title": "Closing Remarks and Adjournment",
+        "chapter_summary": "The speaker wraps up the meeting by acknowledging the Joy character from the movie Inside Out and emphasizes the importance of celebrating joy while working towards better governance. The meeting is adjourned."
+      }
+    ]
+  }
