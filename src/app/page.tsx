@@ -39,6 +39,7 @@ export default async function Home() {
                   <Td>{meeting.name}</Td>
                   <Td>
                     {format(new Date(meeting.start_time), 'MM/dd/yyyy hh:mm a')}
+                    {meeting.start_time > new Date() ? ' (Upcoming)' : ''}
                   </Td>
                   <Td>
                     <Link href={`/meeting/${meeting.meeting_id}`}>
