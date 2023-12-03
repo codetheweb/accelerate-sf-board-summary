@@ -12,15 +12,21 @@
     "scrape:events": "npx tsx src/scripts/scrape-to-db.ts"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "execa": "^8.0.1",
+    "framer-motion": "^10.16.12",
     "kysely": "^0.26.3",
     "ndjson": "^2.0.0",
     "next": "14.0.3",
     "postgres-migrations": "^5.3.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/ndjson": "^2.0.4",

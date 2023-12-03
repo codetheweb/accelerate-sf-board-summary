@@ -42,11 +42,11 @@ const main = async () => {
           result: item.result,
         })))
         .onConflict(qb => qb.columns(["meeting_id", "ext_file_id"]).doUpdateSet({
-          type: "EXCLUDED.type",
-          status: "EXCLUDED.status",
-          title: "EXCLUDED.title",
-          action: "EXCLUDED.action",
-          result: "EXCLUDED.result",
+          type: eb => eb.ref("excluded.type"),
+          status: eb => eb.ref("excluded.status"),
+          title: eb => eb.ref("excluded.title"),
+          action: eb => eb.ref("excluded.action"),
+          result: eb => eb.ref("excluded.result"),
         }))
         .execute()
       }

@@ -1,95 +1,56 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { getDbFromEnv } from '@/db/get-db'
+import { Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import { format } from 'date-fns'
+import Link from 'next/link'
+import useSWR from 'swr'
 
-export default function Home() {
+async function getData() {
+  const {db} = getDbFromEnv()
+
+  return await db.selectFrom('meeting').selectAll().execute()
+}
+
+export default async function Home() {
+  const meetings = await getData()
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main>
+      <Heading textAlign="center" mb={10}>San Francisco Meetings</Heading>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <TableContainer>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              <Th>
+                Name
+              </Th>
+              <Th>
+                Time
+              </Th>
+              <Th>
+                Details
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {
+              meetings.map(meeting => (
+                <Tr key={meeting.meeting_id}>
+                  <Td>{meeting.name}</Td>
+                  <Td>
+                    {format(new Date(meeting.start_time), 'MM/dd/yyyy hh:mm a')}
+                  </Td>
+                  <Td>
+                    <Link href={`/meeting/${meeting.meeting_id}`}>
+                      View
+                    </Link>
+                  </Td>
+                </Tr>
+              ))
+            }
+          </Tbody>
+        </Table>
+      </TableContainer>
     </main>
   )
 }

@@ -1,6 +1,7 @@
 import { Kysely, PostgresDialect } from "kysely";
 import { KyselyDatabaseInstance, KyselySchema } from "./types";
 import { Pool } from "pg";
+import { loadEnvFromFile } from "@/lib/load-env-from-file";
 
 type DatabaseInstanceAndPool = { db: KyselyDatabaseInstance; pool: Pool };
 
@@ -43,3 +44,9 @@ export const getDb: GetDb = (databaseUrlOrPool) => {
 
   return databaseUrlToSingleton.get(databaseUrlOrPool)!;
 };
+
+export const getDbFromEnv = () => {
+  loadEnvFromFile()
+
+  return getDb(process.env.DATABASE_URL!);
+}
