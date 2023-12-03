@@ -42,13 +42,6 @@ export const callPythonScrapeScript = async ({limit}: {limit?: number} = {}): Pr
     }
   })
 
-  child.stdout.pipe(process.stdout)
-
   await once(child, "exit")
   return events
 }
-
-(async () => {
-  const events = await callPythonScrapeScript({limit: 2})
-  console.log(events)
-})()

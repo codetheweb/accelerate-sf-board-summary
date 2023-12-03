@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "db:migrate": "npx tsx src/scripts/migrate-database.ts",
-    "db:reset": "npx tsx src/scripts/reset-database.ts"
+    "db:reset": "npx tsx src/scripts/reset-database.ts",
+    "scrape:events": "npx tsx src/scripts/scrape-to-db.ts"
   },
   "dependencies": {
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "execa": "^8.0.1",
     "kysely": "^0.26.3",
