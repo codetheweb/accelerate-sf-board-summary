@@ -15,9 +15,16 @@ index = pinecone.Index("board")
 def search(text):
     embedding = embed(text)
     resp = index.query(vector=embedding, top_k=5)
+
+    hits = []
     for match in resp["matches"]:
         match_record = hashlookup.get_by_id(match['id'])
-        print(match_record["start"] + ": " + match_record["content"])
+        hits.append({
+            "start": match_record["start"],
+            "content": match_record["content"]
+        })
+    
+    return hits
 
 hashlookup.init()
-search("item 18")
+# search("item 18")
