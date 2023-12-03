@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "python-legistar-scraper"
+version = "0.1.0"
+description = ""
+authors = ["Max Isom <hi@maxisom.me>"]
+readme = "README.md"
+packages = [{include = "python_legistar_scraper"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+scraper-legistar = "^0.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -6,19 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate": "npx tsx src/scripts/migrate-database.ts",
+    "db:reset": "npx tsx src/scripts/reset-database.ts"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "execa": "^8.0.1",
+    "kysely": "^0.26.3",
+    "ndjson": "^2.0.0",
+    "next": "14.0.3",
+    "postgres-migrations": "^5.3.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.3"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@types/ndjson": "^2.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.0.3"
+    "eslint-config-next": "14.0.3",
+    "tsx": "^4.6.2",
+    "typescript": "^5",
+    "zapatos": "^6.3.0"
   }
 }
