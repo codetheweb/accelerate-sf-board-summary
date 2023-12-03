@@ -21,7 +21,7 @@ export const SearchValueProvider = ({ children }: { children: React.ReactNode}) 
   const router = useRouter()
   const pathname = usePathname()
   useEffect(() => {
-    if (value !== "" && router.w !== "/search") {
+    if (value !== "" && pathname !== "/search") {
       router.push("/search")
     }
   }, [value, router, pathname])
