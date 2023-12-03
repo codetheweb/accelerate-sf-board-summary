@@ -8,7 +8,7 @@ const main = async () => {
 
   const {db} = getDb(process.env.DATABASE_URL!)
 
-  const events = await callPythonScrapeScript({limit: 2})
+  const events = await callPythonScrapeScript({limit: 10})
 
   for (const event of events) {
     await db.transaction().execute(async trx => {
@@ -26,7 +26,14 @@ const main = async () => {
       const {meeting_id} = await trx
       .insertInto("meeting")
       .values(values)
-      .onConflict(qb => qb.columns(["name", "start_time"]).doUpdateSet(values))
+      .onConflict(qb => qb.columns(["name", "start_time"]).doUpdateSet({
+        location: values.location,
+        details_url: values.details_url,
+        agenda_url: values.agenda_url,
+        minutes_url: values.minutes_url,
+        video_url: values.video_url,
+        transcript_url: values.transcript_url,
+      }))
       .returning("meeting_id").executeTakeFirstOrThrow()
 
       if (event.items.length > 0) {
@@ -41,13 +48,7 @@ const main = async () => {
           action: item.action,
           result: item.result,
         })))
-        .onConflict(qb => qb.columns(["meeting_id", "ext_file_id"]).doUpdateSet({
-          type: eb => eb.ref("excluded.type"),
-          status: eb => eb.ref("excluded.status"),
-          title: eb => eb.ref("excluded.title"),
-          action: eb => eb.ref("excluded.action"),
-          result: eb => eb.ref("excluded.result"),
-        }))
+        .onConflict(qb => qb.columns(["meeting_id", "ext_file_id"]).doNothing())
         .execute()
       }
     })

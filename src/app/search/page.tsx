@@ -14,6 +14,12 @@ export default async function Home() {
 
   return (
     <main>
+      <Heading textAlign="center" mb={10}>San Francisco Meetings</Heading>
+
+      <VStack>
+        <Input placeholder="Search by topic..." mb={10} maxW="lg" shadow="sm" mx="auto"/>
+      </VStack>
+
       <TableContainer>
         <Table variant="simple">
           <Thead>
